@@ -22,7 +22,7 @@ public class ItemController {
 
     @GetMapping("/admin/item/new")
     public String itemForm(Model model) {
-        model.addAttribute("itemFormFto", new ItemFormDto());
+        model.addAttribute("itemFormDto", new ItemFormDto());
         return "item/itemForm";
     }
 
