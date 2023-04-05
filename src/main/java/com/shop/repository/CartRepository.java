@@ -1,11 +1,10 @@
 package com.shop.repository;
 
-import com.shop.entity.Member;
+import com.shop.entity.Cart;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface MemberRepository extends JpaRepository<Member, Long> {
+public interface CartRepository extends JpaRepository<Cart,Long> {
 
-    Member findByEmail(String email);
 }
