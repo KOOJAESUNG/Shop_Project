@@ -10,8 +10,9 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface ItemRepository extends JpaRepository<Item,Long> , QuerydslPredicateExecutor<Item> {
+public interface ItemRepository extends JpaRepository<Item, Long>, QuerydslPredicateExecutor<Item>, ItemRepositoryCustom {
     List<Item> findByItemNm(String itemNm);
+
     List<Item> findByItemNmOrItemDetail(String itemNm, String itemDetail);
 
     List<Item> findByPriceLessThan(Integer price);
@@ -22,7 +23,7 @@ public interface ItemRepository extends JpaRepository<Item,Long> , QuerydslPredi
             "%:itemDetail% order by i.price desc")
     List<Item> findByItemDetail(@Param("itemDetail") String itemDetail); //@Param은 jpql에 들어갈 변수
 
-    @Query(value="select * from item i where i.item_detail like " +
+    @Query(value = "select * from item i where i.item_detail like " +
             "%:itemDetail% order by i.price desc", nativeQuery = true)
     List<Item> findByItemDetailByNative(@Param("itemDetail") String itemDetail);
 
